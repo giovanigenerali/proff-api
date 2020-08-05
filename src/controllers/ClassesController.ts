@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import db from "../database/connection";
 
 import convertHourToMinutes from "../utils/converHourToMinutes";
+import ConnectionsController from "./ConnectionsController";
 
 interface ScheduleItem {
   week_day: number;
@@ -88,6 +89,8 @@ export default class ClassesController {
 
       return response.status(201).send();
     } catch (err) {
+      console.log("ClassesController - create:", err);
+
       await trx.rollback();
 
       return response

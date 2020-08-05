@@ -25,6 +25,8 @@ export default class ConnectionsController {
 
       return response.status(201).send();
     } catch (err) {
+      console.log("ConnectionsController - create:", err);
+
       await trx.rollback();
 
       return response
